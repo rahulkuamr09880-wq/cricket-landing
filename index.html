@@ -1,155 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '897477943038712');
-fbq('track', 'PageView');
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Assistance Available</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Official Support</title>
 
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family: Arial, sans-serif;
   background:#000;
   color:#fff;
+  font-family: Arial, sans-serif;
 }
-.container{
+.wrapper{
   max-width:520px;
   margin:auto;
-  padding:20px;
+  padding:16px;
+}
+.hero{
+  width:100%;
+  border-radius:14px;
+  display:block;
+}
+.notice{
   text-align:center;
-}
-.logo img{
-  width:170px;
-  margin:25px auto 10px;
-}
-.timer-box{
-  background:linear-gradient(135deg,#00ff99,#00ccff);
-  color:#000;
-  padding:12px;
-  border-radius:12px;
-  font-size:20px;
-  font-weight:bold;
-  margin:15px 0;
-}
-h1{
-  color:#00ff99;
-  font-size:26px;
+  margin:14px 0 6px;
+  color:#cfcfcf;
+  font-size:14px;
 }
 .btn{
-  display:block;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
   background:#25D366;
   color:#000;
   text-decoration:none;
   font-size:20px;
   padding:16px;
   border-radius:50px;
-  margin:18px 0;
   font-weight:bold;
+  margin:16px auto 24px;
+  width:100%;
+  max-width:420px;
+  animation: blink 1.2s infinite, pulse 1.6s infinite;
 }
-.section{
-  background:#111;
-  padding:15px;
-  border-radius:10px;
-  margin:15px 0;
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:60px;
+  border:2px solid rgba(37,211,102,.6);
+  animation:pulse 1.6s infinite;
 }
-.offer{
-  background:linear-gradient(135deg,#ffb300,#ff9800);
-  color:#000;
-  padding:16px;
-  border-radius:12px;
-  font-size:17px;
-  font-weight:bold;
+@keyframes blink{
+  0%,100%{filter:brightness(1)}
+  50%{filter:brightness(1.15)}
+}
+@keyframes pulse{
+  0%{transform:scale(1); opacity:.7}
+  100%{transform:scale(1.08); opacity:0}
 }
 .footer{
+  text-align:center;
   font-size:12px;
   color:#777;
-  margin-top:30px;
-  line-height:1.6;
+  margin:10px 0 24px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- FULL PAGE CLICK HANDLER -->
+<div class="wrapper" id="clickArea">
 
-<!-- LOGO -->
-<div class="logo">
-  <img src="logo.png" alt="Brand Logo">
-</div>
+  <!-- IMAGE -->
+  <img src="hero.jpg" alt="Official Support" class="hero"/>
 
-<!-- TIMER -->
-<div class="timer-box">
-⏰ Limited Time Support Ends In: <span id="countdown">10:00</span>
-</div>
+  <div class="notice">
+    Online assistance available • Connect on WhatsApp
+  </div>
 
-<h1>🔥 Digital Assistance Available</h1>
-<p>Instant online support for users<br>WhatsApp assistance available</p>
+  <!-- BLINKING WHATSAPP BUTTON -->
+  <a class="btn" id="waBtn"
+     href="https://wa.me/919608985860?text=Hi%20I%20need%20support"
+     aria-label="WhatsApp">
+     💬 Message on WhatsApp
+  </a>
 
-<!-- CTA -->
-<a class="btn"
-href="https://wa.me/919608985860?text=Hi%20I%20need%20support%20assistance"
-onclick="fbq('track','Contact');">
-🟢 WhatsApp Now
-</a>
-
-<!-- SAFE OFFER -->
-<div class="offer">
-🔥 SPECIAL ACCESS 🔥<br>
-Free Entry with Added Benefits
-</div>
-
-<div class="section">
-✔ 24x7 WhatsApp Support<br>
-✔ Instant Response<br>
-✔ Simple & Smooth Assistance
-</div>
-
-<div class="section">
-🎯 Service-Related Assistance Available<br>
-💬 Details on WhatsApp
-</div>
-
-<!-- FINAL CTA -->
-<a class="btn"
-href="https://wa.me/919608985860?text=Hi%20I%20need%20support%20assistance"
-onclick="fbq('track','Contact');">
-💬 Chat on WhatsApp
-</a>
-
-<div class="footer">
-| Terms & Conditions | Privacy Policy<br><br>
-Disclaimer: This page is for informational assistance only.
-18+ users only.
-</div>
+  <div class="footer">
+    Terms & Conditions • Privacy Policy<br/>
+    Informational assistance only • 18+
+  </div>
 
 </div>
 
 <script>
-let time = 600;
-const countdownEl = document.getElementById("countdown");
-setInterval(() => {
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  s = s < 10 ? "0" + s : s;
-  countdownEl.innerHTML = m + ":" + s;
-  if(time > 0) time--;
-}, 1000);
+(function(){
+  const waLink = "https://wa.me/919608985860?text=Hi%20I%20need%20support";
+
+  // Prevent double navigation when clicking the button itself
+  document.getElementById("waBtn").addEventListener("click", function(e){
+    e.stopPropagation();
+  });
+
+  // Anywhere click (image/background) → WhatsApp
+  document.getElementById("clickArea").addEventListener("click", function(){
+    window.location.href = waLink;
+  });
+})();
 </script>
 
 </body>
